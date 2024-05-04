@@ -9,7 +9,7 @@ const PageComponent = () => {
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
         <UserProgress
-          activeCourses={{ title: "Spanish", imageSrc:"es.svg" }}
+          activeCourses={{ title: "Spanish", imageSrc: "es.svg" }}
           hearts={5}
           points={100}
           hasActiveSubscription={false}
@@ -17,6 +17,8 @@ const PageComponent = () => {
       </StickyWrapper>
       <FeedWrapper>
         <Header title="spanish" />
+        <div className="space-y-4">
+        </div>
       </FeedWrapper>
     </div>
   );
