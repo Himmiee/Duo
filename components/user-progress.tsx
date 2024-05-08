@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import { Infinity, InfinityIcon } from "lucide-react";
+import { InfinityIcon } from "lucide-react";
+import { courses } from "@/db/schema";
 
 type Props = {
-  activeCourses: { imageSrc: string; title: string };
+  activeCourse: typeof courses.$inferInsert;
   hearts: number;
   points: number;
   hasActiveSubscription: boolean;
 };
 
 export const UserProgress = ({
-  activeCourses,
+  activeCourse,
   hearts,
   points,
   hasActiveSubscription,
@@ -25,8 +26,8 @@ export const UserProgress = ({
             className="rounded-md border"
             width={32}
             height={32}
-            src={activeCourses.imageSrc}
-            alt={activeCourses.title}
+            src={activeCourse.imageSrc}
+            alt={activeCourse.title}
           />
         </Button>
       </Link>
@@ -51,7 +52,11 @@ export const UserProgress = ({
             src="/heart.svg"
             alt="Hearts"
           />
-          {hasActiveSubscription ? <InfinityIcon className="h-4 w-4 stroke-[3]" /> : hearts}
+          {hasActiveSubscription ? (
+            <InfinityIcon className="h-4 w-4 stroke-[3]" />
+          ) : (
+            hearts
+          )}
         </Button>
       </Link>
     </div>
