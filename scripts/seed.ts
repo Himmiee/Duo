@@ -30,11 +30,7 @@ const main = async () => {
         title: "Croatian",
         imageSrc: "/hr.svg",
       },
-      {
-        id: 4,
-        title: "French",
-        imageSrc: "/fr.svg",
-      },
+ 
     ]);
 
     console.log("Seeding finished!");
