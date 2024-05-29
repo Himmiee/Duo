@@ -10,6 +10,6 @@ export default defineConfig({
     table: "migrations",
     schema: "public",
   },
-  schema: "./db/schema.ts", // add this line to specify the schema file
-  out: "./drizzle", // directory for generated files
+  schema: "./db/schema.ts", 
+  out: "./drizzle", 
 });
