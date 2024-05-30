@@ -4,12 +4,16 @@ import { Header } from "./header";
 import { UserProgress } from "@/components/user-progress";
 import { title } from "process";
 import { userProgress } from "@/db/schema";
-import { getUserProgress } from "@/db/queries";
+import { getUnits, getUserProgress } from "@/db/queries";
 import { redirect } from "next/navigation";
 
 const PageComponent = async () => {
   const userProgressDate = getUserProgress();
-  const [userProgress] = await Promise.all([userProgressDate]);
+  const unitsData = getUnits();
+  const [userProgress, units] = await Promise.all([
+    userProgressDate,
+    unitsData,
+  ]);
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }
@@ -25,6 +29,9 @@ const PageComponent = async () => {
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
+        {units.map((unit) => (
+          <div key={unit.id}>{JSON.stringify(unit)}</div>
+        ))}
         <div className="space-y-4"></div>
       </FeedWrapper>
     </div>
